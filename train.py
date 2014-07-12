@@ -4,7 +4,7 @@
 host = '127.0.0.1'
 port = 9199
 name = '住所detecter'
-tnum = 100000
+tnum = 50000
 
 import sys
 import json
@@ -18,7 +18,7 @@ def train(client):
     # predict the last ones (that are commented out)
     train_data = []
     counter = 0
-    for line in open('data/zenkoku_utf-8.csv'):
+    for line in open('data/shuffled_zenkoku.csv'):
         line = line.replace('"','')
         adrs_cd, pref_cd, city_cd, town_cd, pn, of, df, pref, pref_ph, city, city_ph, town, town_ph, town_ai, kyoto_ave, aza, aza_ph, ai, of_name, of_ph, oa, new_acd = line.split(',')
         train_data.append((pref, Datum({'name': city})))
